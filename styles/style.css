@@ -9,7 +9,6 @@
   grid-template-rows: repeat(3, min-content);
   background-color: var(--bg-color);
   font-weight: 400;
-  padding: 0 clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
 }
 
 .header {
@@ -174,6 +173,7 @@
   line-height: 130%;
   font-weight: 700;
   color: var(--accent-color-header);
+  grid-column: 1 / span 1;
 }
 
 .section__content {
@@ -214,10 +214,6 @@
 .section__content-link:focus-visible {
   /* outline: 1px solid var(--text-color); */
   border: 1px solid var(--text-color);
-}
-
-.section__title {
-  grid-column: 1 / span 1;
 }
 
 .section__content-columns {
@@ -310,6 +306,10 @@ h5.title_decor {
 
   .header__theme-menu {
     margin-block-start: clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem);
+    grid-row: 2 / span 1;
+    grid-column: -2 / span 1;
+    justify-self: end;
+    align-self: center;
   }
 
   @media (height <= 768px) {
@@ -356,13 +356,6 @@ h5.title_decor {
   }
 
   /* перемещение меню вправо  */
-
-  .header__theme-menu {
-    grid-row: 2 / span 1;
-    grid-column: -2 / span 1;
-    justify-self: end;
-    align-self: center;
-  }
 
   /* мобильный шрифт */
 

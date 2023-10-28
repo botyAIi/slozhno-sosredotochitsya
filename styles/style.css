@@ -1,5 +1,384 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  display: grid;
+  flex-direction: column;
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 18px;
+  color: var(--text-color);
+  grid-template-rows: repeat(3, min-content);
+  background-color: var(--bg-color);
+  font-weight: 400;
+  padding: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
+  padding-block-end: 0;
+}
+
+.header,
+.content {
+  margin-block-end: clamp(2.5rem, 0.9002rem + 6.8259vi, 3.75rem);
+}
+
+.header {
+  position: relative;
+  display: grid;
+  block-size: calc(100vb - clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem));
+  inline-size: 100%;
+  padding-block-end: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
+  grid-template-columns: min-content repeat(2, 1fr) min-content;
+  grid-template-rows: repeat(4, min-content) 1fr;
+  min-block-size: 668px;
+}
+
+/* декоративные уголки */
+
+.decorated-zone::before {
+  content: "";
+  inline-size: 25px;
+  block-size: 25px;
+  border-top: 1px solid var(--accent-color-header);
+  border-right: 1px solid var(--accent-color-header);
+  justify-self: end;
+  grid-row: 1 / span 1;
+  grid-column: -2 / -1;
+}
+
+.decorated-zone::after {
+  content: "";
+  inline-size: 25px;
+  block-size: 25px;
+  border-bottom: 1px solid var(--accent-color-header);
+  border-left: 1px solid var(--accent-color-header);
+  grid-row: -2 / -1;
+  grid-column: 1 / span 1;
+  align-self: end;
+}
+
+/* декоративный элемент с точкой  */
+
+.decorated-item {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.decorated-item::before {
+  content: "REC";
+  font-size: inherit;
+  color: var(--accent-color-header);
+  line-height: 138.889%;
+}
+
+.decorated-item::after {
+  content: "";
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 4.5px;
+  margin: 8px 9px 0 0;
+  background-color: var(--accent-color-header);
+  box-shadow: 0px 0px 4px 2.5px var(--accent-color-header);
+}
+
+.header__theme-menu {
+  color: var(--accent-color-header);
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 2;
+  justify-self: center;
+  margin-block-end: clamp(10.8125rem, -7.9375rem + 39.0625vw, 17.0625rem);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  gap: 10px;
+  color: inherit;
+}
+
+.header__theme-menu-item {
+  font-size: inherit;
+}
+
+.header__theme-menu-button {
+  text-transform: lowercase;
+  background-color: transparent;
+  padding: 0 13px;
+  outline: none;
+  border: none;
+  font-weight: 400;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--accent-color-hover);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--accent-color-header);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--accent-color-header);
+}
+
+.header__title {
+  grid-row: 3 / 4;
+  grid-column: 1 / 4;
+  margin-block-end: clamp(7.125rem, -1.875rem + 18.75vb, 10.125rem);
+  margin-inline-start: -20px;
+  text-wrap: nowrap;
+}
+
+.heading {
+  text-shadow: 4px 4px 0px var(--title-shadow-color);
+  color: var(--title-color);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  line-height: 82.5%;
+}
+
+.header__paragraph {
+  min-inline-size: 355px;
+  max-inline-size: 50%;
+  justify-self: end;
+  block-size: min-content;
+  grid-column: 1 / -1;
+  grid-row: 4 / 5;
+  margin-block-end: clamp(5.5625rem, -3.625rem + 19.1406vb, 8.625rem);
+}
+
+.title_decor {
+  background-color: var(--accent-color);
+  color: var(--decor-title-color);
+  font-weight: 700;
+  line-height: 130%;
+  font-size: inherit;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);
+}
+
+.content__section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.content__section.aside {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.section__title {
+  font-size: inherit;
+  line-height: 130%;
+  font-weight: 700;
+  color: var(--accent-color-header);
+}
+
+.section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: 2 / -1;
+}
+
+.section__content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section__content-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section__content-text {
+  line-height: 130%;
+}
+
+.section__content-link {
+  text-shadow: 2px 2px var(--accent-color);
+}
+
+.section__content-link:hover {
+  border-block-end: 1px solid var(--text-color);
+}
+
+.section__content-link:focus {
+  outline: none;
+}
+
+.section__content-link:focus-visible {
+  /* outline: 1px solid var(--text-color); */
+  border: 1px solid var(--text-color);
+}
+
+.section__title {
+  grid-column: 1 / span 1;
+}
+
+.section__content-columns {
+  grid-column: 1 / -1;
+  grid-row: 2 / span 1;
+}
+
+.section__content-list-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 20px;
+}
+
+.section__content.title_advice {
+  gap: 20px;
+}
+
+h5.title_decor {
+  font-weight: 400;
+  font-size: inherit;
+}
+
+.section__pictures {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.625rem, 0.0286rem + 2.5445vw, 1.25rem);
+}
+
+.pictures-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  gap: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
+}
+
+.picture__item {
+  object-fit: cover;
+  object-position: center;
+}
+
+.picture__n1 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 2;
+}
+
+.picture__n2 {
+  grid-row: 1 / span 2;
+  grid-column: 3 / span 1;
+}
+
+.picture__n3 {
+  grid-row: 2 / span 2;
+  grid-column: 1 / span 1;
+}
+
+.picture__n4 {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.picture__n5 {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 2;
+}
+
+.footer {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-columns: min-content 1fr min-content;
+  inline-size: 100%;
+  block-size: 100vb;
+  padding-block: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
+}
+
+.footer__title {
+  align-self: center;
+  justify-self: center;
+  grid-row: 2 / span 1;
+  grid-column: 1 / -1;
+}
+
+.footer > .heading {
+  text-shadow: 2px 2px 0px var(--accent-color);
+}
+
+@media (width <= 768px) {
+  .content__section.aside {
+    grid-template-columns: 1fr 2fr; /* убираем смещениие при адаптиве под макет */
+  }
+
+  .header__theme-menu {
+    margin-block-start: clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem);
+  }
+
+  @media (height <= 768px) {
+    .header__theme-menu {
+      margin-block-start: clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem);
+      margin-block-end: clamp(4.0625rem, -41.0275rem + 108vb, 10.8125rem);
+    }
+  }
+
+  .header__paragraph {
+    margin-block-end: clamp(1.9375rem, -22.2775rem + 58vb, 5.5625rem);
+  }
+
+  .header__title {
+    margin-block-end: clamp(3.4375rem, -21.195rem + 59vb, 7.125rem);
+    margin-inline-start: calc(
+      -1 * clamp(0.625rem, 0.0286rem + 2.5445vb, 1.25rem)
+    );
+  }
+
+  /* подровняли для лучшей визуализации */
+
+  @media (width < 610px) {
+    .content__section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content__section-aside {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header__title {
+      text-wrap: wrap;
+      margin-inline-start: 0;
+    }
+
+    .pictures-container {
+      margin-block-start: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  /* перемещение меню вправо  */
+
+  .header__theme-menu {
+    grid-row: 2 / span 1;
+    grid-column: -2 / span 1;
+    justify-self: end;
+    align-self: center;
+  }
+
+  /* мобильный шрифт */
+
+  .heading {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+
+  .header__theme-menu-list {
+    flex-direction: column;
+  }
+
+  .section__content-list-row {
+    display: flex;
+    flex-direction: column;
+  }
 }

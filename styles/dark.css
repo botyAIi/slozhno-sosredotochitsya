@@ -4,7 +4,6 @@
   переключая тему
 */
 
-
 .page.theme_dark {
   --accent-color: #ff0070;
   --accent-color-header: #ff0070;
@@ -42,7 +41,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
   :root {
     --accent-color: #ff0070;
     --accent-color-header: #ff0070;
@@ -62,10 +60,9 @@
     background-repeat: no-repeat;
   }
 
-    @media (width <= 768px) {
-      .page > .heading {
-        --title-shadow-color: #ff0070; 
+  @media (width <= 768px) {
+    .page > .heading {
+      --title-shadow-color: #ff0070;
     }
-
   }
 }

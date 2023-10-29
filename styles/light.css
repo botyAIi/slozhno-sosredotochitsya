@@ -27,12 +27,11 @@
 
 @media (width <= 768px) {
   .page.theme_light > .header > .heading {
-    --title-shadow-color: #FF8DCB;
+    --title-shadow-color: #ff8dcb;
   }
 }
 
 @media (prefers-color-scheme: light) {
-
   :root {
     --accent-color: #ff8dcb;
     --accent-color-header: #353430;
@@ -58,7 +57,7 @@
 
   @media (width <= 768px) {
     .page > .header {
-      --title-shadow-color: #FF8DCB; 
+      --title-shadow-color: #ff8dcb;
     }
   }
 }

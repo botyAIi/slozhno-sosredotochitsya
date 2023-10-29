@@ -3,7 +3,7 @@
 .page {
   display: grid;
   flex-direction: column;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 18px;
   color: var(--text-color);
   grid-template-rows: repeat(3, min-content);
@@ -79,7 +79,9 @@
   grid-row: 1 / span 1;
   grid-column: 2 / span 2;
   justify-self: center;
-  margin-block-end: calc(clamp(10.8125rem, -7.9375rem + 39.0625vb, 17.0625rem) - 10px);
+  margin-block-end: calc(
+    clamp(10.8125rem, -7.9375rem + 39.0625vb, 17.0625rem) - 10px
+  );
 }
 
 .header__theme-menu-list {
@@ -303,14 +305,15 @@ h4.title_decor {
 }
 
 @media (width <= 768px) {
-
   .content__section.aside {
     grid-template-columns: 1fr 2fr; /* убираем смещениие при адаптиве под макет */
   }
 
   .header__theme-menu {
     margin-block-end: 10px;
-    margin-block-start: calc(clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem) - 1.5px);
+    margin-block-start: calc(
+      clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem) - 1.5px
+    );
     grid-row: 2 / span 1;
     grid-column: -2 / span 1;
     justify-self: end;
@@ -325,8 +328,6 @@ h4.title_decor {
   .header__paragraph {
     margin-block-end: clamp(1.9375rem, -10.611rem + 30.0562vb, 8.625rem);
   }
-
-  
 
   /* подровняли для лучшей визуализации */
 
@@ -349,7 +350,6 @@ h4.title_decor {
       display: flex;
       flex-direction: column;
     }
-
   }
 
   /* перемещение меню вправо  */

@@ -258,27 +258,27 @@ h4.title_decor {
   object-position: center;
 }
 
-.picture__n1 {
+.picture__sunset {
   grid-row: 1 / span 1;
   grid-column: 1 / span 2;
 }
 
-.picture__n2 {
+.picture__icecream {
   grid-row: 1 / span 2;
   grid-column: 3 / span 1;
 }
 
-.picture__n3 {
+.picture__diskette {
   grid-row: 2 / span 2;
   grid-column: 1 / span 1;
 }
 
-.picture__n4 {
+.picture__books {
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
 }
 
-.picture__n5 {
+.picture__street {
   grid-row: 3 / span 1;
   grid-column: 2 / span 2;
 }

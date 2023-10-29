@@ -4,16 +4,8 @@
   переключая тему
 */
 
-.page.theme_dark {
-  --accent-color: #ff0070;
-  --accent-color-header: #ff0070;
-  --text-color: #f1b2ce;
-  --bg-color: #000028;
-  --title-color: #db00ff;
-  --decor-title-color: #000028;
-  --title-shadow-color: #ff0070;
-  --accent-color-hover: #ff007066;
 
+.page.theme_dark {
   background-image: url(../images/cover-image-dark.png);
   background-attachment: fixed;
   background-size: cover;
@@ -21,7 +13,7 @@
   background-repeat: no-repeat;
 }
 
-:root.theme_dark {
+:root .theme_dark {
   --accent-color: #ff0070;
   --accent-color-header: #ff0070;
   --text-color: #f1b2ce;
@@ -32,12 +24,8 @@
   --accent-color-hover: #ff007066;
 }
 
-.page.theme_dark > .header > .decorated-item {
+.theme_dark .decorated-item {
   display: inline-flex;
-}
-
-.page.theme_dark > .header > .heading {
-  --title-shadow-color: #ff0070;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,10 +47,8 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+}
 
-  @media (width <= 768px) {
-    .page > .heading {
-      --title-shadow-color: #ff0070;
-    }
-  }
+.theme_dark .heading {
+    --title-shadow-color: #ff0070;
 }

@@ -5,9 +5,11 @@
 
 :root {
   --accent-color: #ff0070;
+  --accent-color-header: #ff0070;
   --text-color: #f1b2ce;
   --bg-color: #000028;
   --title-color: #db00ff;
   --decor-title-color: #000028;
   --title-shadow-color: #ff0070;
+  --accent-color-hover: #ff007066;
 }

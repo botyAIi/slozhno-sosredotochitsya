@@ -25,7 +25,14 @@
   display: none;
 }
 
+@media (width <= 768px) {
+  .page.theme_light > .header > .heading {
+    --title-shadow-color: #FF8DCB;
+  }
+}
+
 @media (prefers-color-scheme: light) {
+
   :root {
     --accent-color: #ff8dcb;
     --accent-color-header: #353430;
@@ -45,7 +52,13 @@
     background-repeat: no-repeat;
   }
 
-  .page > .header > .decorated-item {
+  .header > .decorated-item {
     display: none;
+  }
+
+  @media (width <= 768px) {
+    .page > .header {
+      --title-shadow-color: #FF8DCB; 
+    }
   }
 }

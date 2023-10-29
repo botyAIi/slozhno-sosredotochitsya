@@ -3,7 +3,7 @@
 .page {
   display: grid;
   flex-direction: column;
-  font-family: "IBM Plex Mono", sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 18px;
   color: var(--text-color);
   grid-template-rows: repeat(3, min-content);
@@ -18,7 +18,7 @@
   inline-size: 100%;
   padding: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
   grid-template-columns: min-content repeat(2, 1fr) min-content;
-  grid-template-rows: repeat(4, min-content) 1fr;
+  grid-template-rows: repeat(2, min-content) 1fr repeat(2, min-content);
   min-block-size: 668px;
   margin-block-end: clamp(2.5rem, 0.9002rem + 6.8259vi, 3.75rem);
 }
@@ -51,8 +51,8 @@
 
 .decorated-item {
   position: absolute;
-  inset-inline-end: 0;
-  inset-block-start: 0;
+  inset-inline-end: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
+  inset-block-start: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
   display: inline-flex;
   gap: 10px;
 }
@@ -79,7 +79,7 @@
   grid-row: 1 / span 1;
   grid-column: 2 / span 2;
   justify-self: center;
-  margin-block-end: clamp(10.8125rem, -7.9375rem + 39.0625vw, 17.0625rem);
+  margin-block-end: calc(clamp(10.8125rem, -7.9375rem + 39.0625vb, 17.0625rem) - 10px);
 }
 
 .header__theme-menu-list {
@@ -95,14 +95,15 @@
 .header__theme-menu-button {
   text-transform: lowercase;
   background-color: transparent;
-  padding: 0 13px;
+  padding: 1.5px 13px;
   outline: none;
   border: none;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .header__theme-menu-button:hover {
-  border: 1px solid var(--accent-color-hover);
+  outline: 1px solid var(--accent-color-hover);
 }
 
 .header__theme-menu-button:focus {
@@ -114,21 +115,21 @@
 }
 
 .header__theme-menu-button_active {
-  border: 1px solid var(--accent-color-header);
+  outline: 1px solid var(--accent-color-header);
+  pointer-events: none;
 }
 
 .header__title {
   grid-row: 3 / 4;
-  grid-column: 1 / 4;
-  margin-block-end: clamp(7.125rem, -1.875rem + 18.75vb, 10.125rem);
+  grid-column: 1 / -1;
+  align-self: center;
   margin-inline-start: -20px;
-  text-wrap: nowrap;
 }
 
 .heading {
   text-shadow: 4px 4px 0px var(--title-shadow-color);
   color: var(--title-color);
-  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vi, 9.8125rem);
   line-height: 82.5%;
 }
 
@@ -153,14 +154,14 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);
+  gap: clamp(3.125rem, 1.3359rem + 7.6336vi, 5rem);
   padding-inline: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
   margin-block-end: clamp(2.5rem, 0.9002rem + 6.8259vi, 3.75rem);
 }
 
 .content__section {
   display: grid;
-  grid-template-columns: repeat(3, minmax(210px, 1fr));
+  grid-template-columns: minmax(216px, 1fr) 2fr;
   gap: 20px;
 }
 
@@ -223,15 +224,16 @@
 
 .section__content-list-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 20px;
+  grid-auto-flow: column;
 }
 
 .section__content.title_advice {
   gap: 20px;
 }
 
-h5.title_decor {
+h4.title_decor {
   font-weight: 400;
   font-size: inherit;
 }
@@ -239,7 +241,7 @@ h5.title_decor {
 .section__pictures {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.625rem, 0.0286rem + 2.5445vw, 1.25rem);
+  gap: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
 }
 
 .pictures-container {
@@ -283,6 +285,7 @@ h5.title_decor {
   display: grid;
   grid-template-rows: min-content 1fr min-content;
   grid-template-columns: min-content 1fr min-content;
+  min-block-size: 668px;
   inline-size: 100%;
   block-size: 100vb;
   padding: clamp(0.625rem, 0.0286rem + 2.5445vi, 1.25rem);
@@ -300,35 +303,30 @@ h5.title_decor {
 }
 
 @media (width <= 768px) {
+
   .content__section.aside {
     grid-template-columns: 1fr 2fr; /* убираем смещениие при адаптиве под макет */
   }
 
   .header__theme-menu {
-    margin-block-start: clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem);
+    margin-block-end: 10px;
+    margin-block-start: calc(clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem) - 1.5px);
     grid-row: 2 / span 1;
     grid-column: -2 / span 1;
     justify-self: end;
-    align-self: center;
-  }
-
-  @media (height <= 768px) {
-    .header__theme-menu {
-      margin-block-start: clamp(2.5rem, -10.0485rem + 30.0562vb, 9.1875rem);
-      margin-block-end: clamp(4.0625rem, -41.0275rem + 108vb, 10.8125rem);
-    }
-  }
-
-  .header__paragraph {
-    margin-block-end: clamp(1.9375rem, -22.2775rem + 58vb, 5.5625rem);
+    align-self: end;
   }
 
   .header__title {
-    margin-block-end: clamp(3.4375rem, -21.195rem + 59vb, 7.125rem);
-    margin-inline-start: calc(
-      -1 * clamp(0.625rem, 0.0286rem + 2.5445vb, 1.25rem)
-    );
+    margin-block-end: 0;
+    align-self: center;
   }
+
+  .header__paragraph {
+    margin-block-end: clamp(1.9375rem, -10.611rem + 30.0562vb, 8.625rem);
+  }
+
+  
 
   /* подровняли для лучшей визуализации */
 
@@ -344,15 +342,14 @@ h5.title_decor {
     }
 
     .header__title {
-      text-wrap: wrap;
       margin-inline-start: 0;
     }
 
     .pictures-container {
-      margin-block-start: 10px;
       display: flex;
       flex-direction: column;
     }
+
   }
 
   /* перемещение меню вправо  */
@@ -360,7 +357,7 @@ h5.title_decor {
   /* мобильный шрифт */
 
   .heading {
-    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vi, 7.5rem);
   }
 
   .header__theme-menu-list {
